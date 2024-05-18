@@ -9,7 +9,8 @@ if 'show_camera' not in st.session_state:
 if 'show_video' not in st.session_state:
     st.session_state.show_video = False
 
-st.session_state["good"] = "bad"
+# taken randomly
+st.session_state["photo"] = "good"
 
 def update_percentage():
     """
@@ -78,7 +79,7 @@ def capture_image1(key):
 def capture_image():
     st.session_state.show_camera = False
     st.session_state.show_video = True
-    if st.session_state["good"] == "bad" :
+    if st.session_state["photo"] == "good" :
         st.experimental_rerun()
     cap = cv2.VideoCapture(0)  # Open the default camera (0)
 
@@ -129,7 +130,7 @@ if __name__ == "__main__":
         st.session_state["Hello"] = "true"
         response = capture_image1("camera1")  # Use a unique key
     else :
-        st.session_state["good"] = "moderate"
+        st.session_state["photo"] = "moderate"
         response = None
 
     if response:
