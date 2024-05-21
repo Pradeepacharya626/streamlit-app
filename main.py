@@ -6,8 +6,6 @@ import time
 
 if 'show_camera' not in st.session_state:
     st.session_state.show_camera = True
-if 'show_video' not in st.session_state:
-    st.session_state.show_video = False
 
 # taken randomly
 st.session_state["photo"] = "good"
@@ -78,7 +76,6 @@ def capture_image1(key):
 
 def capture_image():
     st.session_state.show_camera = False
-    st.session_state.show_video = True
     if st.session_state["photo"] == "good" :
         st.experimental_rerun()
     cap = cv2.VideoCapture(0)  # Open the default camera (0)
@@ -127,7 +124,6 @@ if __name__ == "__main__":
 
     # Call the capture_image1 function with a unique key and get the response
     if st.session_state.show_camera == True :
-        st.session_state["Hello"] = "true"
         response = capture_image1("camera1")  # Use a unique key
     else :
         st.session_state["photo"] = "moderate"
@@ -167,9 +163,6 @@ if __name__ == "__main__":
     with col3:
         stop_button = st.button("Stop Capturing", key="stop_button")
 
-    if st.session_state["start_button"] == "true":
-        st.session_state.show_camera = False
-
     if start_button:
         streaming = True  # Set streaming flag to True when capturing starts
 
@@ -208,3 +201,5 @@ if __name__ == "__main__":
         st.warning("Capture stopped.")
         print("Total count", total_count)
         print("Proper count", proper_count)
+
+st.session_state
